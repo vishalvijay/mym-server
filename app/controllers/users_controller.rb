@@ -22,7 +22,15 @@ class UsersController < ApplicationController
   def by_uuid
     @user = User.find_by_uuid params[:uuid]
     if @user.present?
-      render json: @user
+      rank = 1
+      User.order("money DESC").each do |new_user|
+        if new_user.id != @user.id
+          rank += 1
+        else
+          break
+        end
+      end
+      render json: {user: @user, rank: rank}
     else
       render json: {:errors => ["User not exist"]}, :status => :unprocessable_entity
     end
