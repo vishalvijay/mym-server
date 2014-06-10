@@ -48,5 +48,10 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+#for super admin
+gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'kaminari'
+gem 'devise'
 gem 'rails_12factor', group: :production
 ruby "2.1.1"
